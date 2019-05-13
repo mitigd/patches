@@ -7,8 +7,8 @@
 -	if ( vsync != NULL && *vsync >= 0 && *vsync <= 3) {
 +
 +	if ( *vsync == 1) {
-+		pCreateInfo->minImageCount = pCreateInfo->minImageCount + 1;
 +		pCreateInfo->presentMode = *vsync;
++		pCreateInfo->minImageCount = pCreateInfo->minImageCount + 1;
 +	}
 +
 +	if ( vsync != NULL && *vsync >= 2 && *vsync <= 3) {
