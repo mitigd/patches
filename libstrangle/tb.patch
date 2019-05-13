@@ -1,0 +1,24 @@
+--- vulkan.c	
++++ vulkan.c
+@@ -97,7 +97,13 @@
+ 	}
+ 
+ 	int* vsync = getVsync();
+-	if ( vsync != NULL && *vsync >= 0 && *vsync <= 3) {
++
++	if ( *vsync == 1) {
++		pCreateInfo->minImageCount = pCreateInfo->minImageCount + 1;
++		pCreateInfo->presentMode = *vsync;
++	}
++
++	if ( vsync != NULL && *vsync >= 2 && *vsync <= 3) {
+ 		pCreateInfo->presentMode = *vsync;
+ 	}
+ 
+@@ -131,4 +137,4 @@
+ 	}
+ 
+ 	return realFunction( device, pCreateInfo, pAllocator, pSampler );
+-}
+\ No newline at end of file
++}
